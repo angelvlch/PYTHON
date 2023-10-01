@@ -1,8 +1,8 @@
+prompt = "How many tickets do you need? "
+num_tickets = input(prompt)
 try:
-    number = int(input("Введите целое число: "))
-    print("Введенное число:", number)
-except:
-    print("Вы ввели не целое число")
-finally:
-    print("Блок try завершил выполнение")
-print("Завершение программы")
+ num_tickets = int(num_tickets)
+except ValueError:
+ print("Please try again.")
+else:
+ print("Your tickets are printing.")
