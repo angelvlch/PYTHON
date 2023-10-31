@@ -1,18 +1,16 @@
-import random
+import re
 
-M = 4
-A = [ [0]*M for i in range(M) ]
-for i in range(M):
-    for j in range(M):
-        # m=(random.randint(0, 10))
-        # A[i][j]=m
-        A[i][j]=A[j][i]=(random.randint(0,10))# для симметричной матрицы
-
-print(A)
-
-for i in range(len(A)-1):
-    for j in range(i+1,len(A)):
-        if A[i][j]!=A[j][i]:
-            print("Матрица не симметричная!")
-            exit()
-print("Матрица симметричная")
+list_keys=[]
+list_lessons=[]
+with open("lessons.txt","r") as f:
+    for i in f:
+        keys=re.findall("[a-zA-Z]+[:]",i)
+        keys[0]=list(keys[0])
+        keys[0].remove(':')
+        keys[0]="".join(keys[0])
+        list_keys.append(keys[0])
+        lessons=sum(list(map(int,re.findall("[0-9]+",i))))
+        list_lessons.append(lessons)
+    print(list_keys,list_lessons)
+    SCHOOL=dict(zip(list_keys,list_lessons))
+    print(SCHOOL) 
